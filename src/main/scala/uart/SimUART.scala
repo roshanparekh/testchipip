@@ -77,6 +77,8 @@ object UARTAdapter {
       uart_sim.suggestName(s"uart_sim_${i}_uartno${uartno}")
       uart_sim.io.uart.txd := dut_io.txd
       dut_io.rxd := uart_sim.io.uart.rxd
+      uart_sim.io.uart.tx_ready := DontCare
+      uart_sim.io.uart.rx_valid := DontCare
       uartno += 1
     }
   }
