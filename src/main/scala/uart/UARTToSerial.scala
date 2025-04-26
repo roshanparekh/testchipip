@@ -37,6 +37,10 @@ class UARTToSerial(freqHz: BigInt, uartParams: UARTParams) extends Module {
   io.uart.txd := txm.io.out
   //dontTouch(txm.io)
 
+  // DSP'25 UART-DMA Integration
+  io.uart.tx_ready := DontCare
+  io.uart.rx_valid := DontCare
+
   io.serial.out <> rxq.io.deq
   txq.io.enq <> io.serial.in
 }
